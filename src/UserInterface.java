@@ -1,10 +1,11 @@
 /*
- * UC7: Display Vessel Details by ID
- * --------------------------------
- * Retrieves vessel details using vesselId
- * and displays formatted output.
+ * UC8: Display High-Performance Vessels
+ * ------------------------------------
+ * Completes end-to-end execution by
+ * displaying vessels with highest speed.
  */
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -40,7 +41,6 @@ public class UserInterface {
 
         Vessel vessel = util.getVesselById(searchId);
 
-        // Step 4: Display result
         if (vessel != null) {
             System.out.println(
                     vessel.getVesselId() + " | " +
@@ -50,6 +50,20 @@ public class UserInterface {
             );
         } else {
             System.out.println("Vessel Id " + searchId + " not found");
+        }
+
+        // Step 4: Display high-performance vessels
+        System.out.println("High performance vessels are");
+
+        List<Vessel> highPerfList = util.getHighPerformanceVessels();
+
+        for (Vessel v : highPerfList) {
+            System.out.println(
+                    v.getVesselId() + " | " +
+                            v.getVesselName() + " | " +
+                            v.getVesselType() + " | " +
+                            v.getAverageSpeed() + " knots"
+            );
         }
 
         sc.close();
