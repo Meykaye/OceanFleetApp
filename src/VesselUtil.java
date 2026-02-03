@@ -28,4 +28,33 @@ public class VesselUtil {
     public List<Vessel> getVesselList() {
         return vesselList;
     }
+
+    /*
+     * UC4: Identify High-Performance Vessels
+     * --------------------------------------
+     * Finds vessels with highest average speed.
+     */
+
+    public List<Vessel> getHighPerformanceVessels() {
+
+        List<Vessel> result = new ArrayList<>();
+
+        double maxSpeed = 0;
+
+        // Find maximum speed
+        for (Vessel vessel : vesselList) {
+            if (vessel.getAverageSpeed() > maxSpeed) {
+                maxSpeed = vessel.getAverageSpeed();
+            }
+        }
+
+        // Collect vessels with max speed
+        for (Vessel vessel : vesselList) {
+            if (vessel.getAverageSpeed() == maxSpeed) {
+                result.add(vessel);
+            }
+        }
+
+        return result;
+    }
 }
