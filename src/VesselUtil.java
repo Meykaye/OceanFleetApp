@@ -28,4 +28,24 @@ public class VesselUtil {
     public List<Vessel> getVesselList() {
         return vesselList;
     }
+
+    /*
+     * UC3: Retrieve Vessel by Vessel ID
+     * --------------------------------
+     * Searches vessel list using
+     * case-sensitive vesselId comparison.
+     */
+
+    public Vessel getVesselById(String vesselId) {
+
+        for (Vessel vessel : vesselList) {
+            if (vessel.getVesselId().equals(vesselId)) {
+                return vessel;
+            }
+        }
+
+        // Return null if vessel not found
+        return null;
+    }
+
 }
